@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(false);
   }, [isAuthenticated, isLoading]);
 
-  const handleLogin = async (email, password) => {
+  const handleLogin = async ({ email, password }) => {
     const { status } = await login(email, password);
     setIsAuthenticated(true);
 

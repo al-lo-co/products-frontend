@@ -1,11 +1,8 @@
-import { deleteProduct } from '@/services/Api';
 import Link from 'next/link';
+import { useProductList } from './useProductList';
 
 export const ProductList = ({ products }) => {
-  const handleDelete = async (id) => {
-    await deleteProduct(id);
-    window.location.reload();
-  };
+  const { handleDelete } = useProductList()
 
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-md max-w-xl mx-auto mt-4">
