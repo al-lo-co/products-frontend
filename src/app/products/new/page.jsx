@@ -1,17 +1,11 @@
 "use client"
 
-import { ProductForm } from "@/app/components/product/ProductForm";
 import { ProtectedRoute } from "@/app/components/shared/ProtectedRoute";
-import { createProduct } from "@/services/Api";
-import { useRouter } from "next/navigation";
+import { useNewProductPage } from "./useNewProductPage";
+import { ProductForm } from "@/app/components/product/form/ProductForm";
 
 const NewProductPage = () => {
-  const router = useRouter();
-
-  const handleCreateProduct = async (createdProduct) => {
-    await createProduct(createdProduct);
-    router.push('/products');
-  };
+  const { handleCreateProduct } = useNewProductPage()
 
   return (
     <ProtectedRoute>
