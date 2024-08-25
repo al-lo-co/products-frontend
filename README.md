@@ -12,7 +12,7 @@ This is a frontend application built with Next.js 14.2.6 and JavaScript JSX comp
 1. **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/your-repository.git](https://github.com/al-lo-co/products-frontend)
+    git clone https://github.com/al-lo-co/products-frontend
     cd products-frontend
     ```
 
