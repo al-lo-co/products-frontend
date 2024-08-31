@@ -1,16 +1,13 @@
 "use client"
 
-import { ProtectedRoute } from "@/app/components/shared/ProtectedRoute";
+import { ProductForm } from "@/components/product/form/ProductForm";
 import { useNewProductPage } from "./useNewProductPage";
-import { ProductForm } from "@/app/components/product/form/ProductForm";
 
 const NewProductPage = () => {
   const { handleCreateProduct } = useNewProductPage()
 
   return (
-    <ProtectedRoute>
-      <ProductForm onSubmit={handleCreateProduct} />
-    </ProtectedRoute>
+    <ProductForm onSubmit={handleCreateProduct} />
   );
 };
 

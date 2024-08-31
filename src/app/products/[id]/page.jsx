@@ -1,8 +1,7 @@
 "use client"
 
-import { ProtectedRoute } from '@/app/components/shared/ProtectedRoute';
+import { ProductForm } from '@/components/product/form/ProductForm';
 import { useProductDetailPage } from './useProductDetailPage';
-import { ProductForm } from '@/app/components/product/form/ProductForm';
 
 const ProductDetailPage = () => {
   const {
@@ -12,17 +11,13 @@ const ProductDetailPage = () => {
 
   if (!product) return (
     <>
-      <ProtectedRoute>
-        <div>Loading...</div>
-      </ProtectedRoute>
+      <div>Loading...</div>
     </>
   )
 
   return (
     <div>
-      <ProtectedRoute>
-        <ProductForm onSubmit={handleUpdateProduct} initialData={product} initialDeleteButton={true} />
-      </ProtectedRoute>
+      <ProductForm onSubmit={handleUpdateProduct} initialData={product} initialDeleteButton={true} />
     </div>
   );
 };

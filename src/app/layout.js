@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
-import { AuthProvider } from "./context/AuthContext"
-import { Header } from "./components/shared/Header"
+import { Header } from "@/components/shared/Header";
 import "./globals.css"
+import { getToken } from "@/services/Auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,15 +11,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const accessToken = getToken()
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <div className="min-h-screen bg-gray-100 p-5">
           <div className="max-w-7xl mx-auto bg-white shadow-md rounded-lg p-5">
-            <AuthProvider>
-              <Header />
-              {children}
-            </AuthProvider>
+            <Header token={accessToken} />
+            {children}
           </div>
         </div>
       </body>

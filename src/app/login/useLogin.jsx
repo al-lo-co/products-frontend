@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useAuth } from '../context/AuthContext';
 import { errorMessage } from '../utils/errorMessage';
+import { login } from '@/services/Auth';
 
 export const useLoginPage = () => {
-  const { handleLogin } = useAuth()
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: ''
@@ -18,7 +17,7 @@ export const useLoginPage = () => {
     e.preventDefault();
     setError('');
 
-    const status = await handleLogin(loginForm);
+    const { status } = await login(loginForm.email, loginForm.password);
 
     if (status === 200) {
       router.push('/products');

@@ -1,13 +1,19 @@
+"use server"
 import axios from 'axios';
-import { getToken } from './Auth';
+import { cookies } from 'next/headers';
 
 const API_URL = process.env.API_URL || "http://localhost:3001/api/v1";
 
-const getAuthHeaders = () => ({
-  headers: {
-    Authorization: `Bearer ${getToken()}`,
-  },
-});
+const getAuthHeaders = () => {
+  const accessToken = cookies().get("accessToken")?.value
+
+  return ({
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  })
+}
+
 
 export const getProducts = async () => {
   const response = await axios.get(`${API_URL}/products`, getAuthHeaders());
